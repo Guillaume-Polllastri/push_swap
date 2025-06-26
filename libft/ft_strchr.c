@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 18:17:42 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/26 13:54:10 by gpollast         ###   ########.fr       */
+/*   Created: 2025/04/28 11:59:44 by gpollast          #+#    #+#             */
+/*   Updated: 2025/05/07 10:09:14 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "libft.h"
 
-t_stack	*stack_push(t_stack *tail, int content)
+char	*ft_strchr(const char *s, int c)
 {
-	t_stack	*head;
-
-	head = malloc(sizeof(t_stack));
-	if (!head)
-		return (NULL);
-	head->content = content;
-	head->next = tail;
-	return (head);
-}
-
-void	stack_destroy(t_stack *head)
-{
-	if (!head)
-		return ;
-	stack_destroy(head->next);
-	free(head);
+	while (*s)
+	{
+		if (*s == (char) c)
+			return ((char *) s);
+		s++;
+	}
+	if (*s == (char) c)
+		return ((char *) s);
+	return (NULL);
 }

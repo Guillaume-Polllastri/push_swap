@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 18:17:42 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/26 13:54:10 by gpollast         ###   ########.fr       */
+/*   Created: 2025/04/26 23:20:49 by gpollast          #+#    #+#             */
+/*   Updated: 2025/05/07 10:09:14 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "libft.h"
 
-t_stack	*stack_push(t_stack *tail, int content)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	t_stack	*head;
+	char	*ptr;
 
-	head = malloc(sizeof(t_stack));
-	if (!head)
-		return (NULL);
-	head->content = content;
-	head->next = tail;
-	return (head);
-}
-
-void	stack_destroy(t_stack *head)
-{
-	if (!head)
-		return ;
-	stack_destroy(head->next);
-	free(head);
+	ptr = (char *) s;
+	while (n > 0)
+	{
+		*ptr = (char) c;
+		ptr++;
+		n--;
+	}
+	return (s);
 }

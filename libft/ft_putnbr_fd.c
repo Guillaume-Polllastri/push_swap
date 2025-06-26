@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 18:17:42 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/26 13:54:10 by gpollast         ###   ########.fr       */
+/*   Created: 2025/05/01 10:43:21 by gpollast          #+#    #+#             */
+/*   Updated: 2025/05/07 10:09:14 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "libft.h"
 
-t_stack	*stack_push(t_stack *tail, int content)
+void	ft_putnbr_fd(int n, int fd)
 {
-	t_stack	*head;
+	char	res;
 
-	head = malloc(sizeof(t_stack));
-	if (!head)
-		return (NULL);
-	head->content = content;
-	head->next = tail;
-	return (head);
-}
-
-void	stack_destroy(t_stack *head)
-{
-	if (!head)
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
 		return ;
-	stack_destroy(head->next);
-	free(head);
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n *= -1;
+	}
+	if (n > 9)
+		ft_putnbr_fd((n / 10), fd);
+	res = (n % 10) + '0';
+	ft_putchar_fd(res, fd);
 }

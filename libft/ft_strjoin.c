@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 18:17:42 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/26 13:54:10 by gpollast         ###   ########.fr       */
+/*   Created: 2025/05/01 14:55:19 by gpollast          #+#    #+#             */
+/*   Updated: 2025/05/07 10:09:14 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "libft.h"
 
-t_stack	*stack_push(t_stack *tail, int content)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_stack	*head;
+	char	*res;
+	int		len_total;
+	int		i;
+	int		j;
 
-	head = malloc(sizeof(t_stack));
-	if (!head)
+	len_total = ft_strlen(s1) + ft_strlen(s2);
+	res = (char *) malloc(sizeof(char) * (len_total + 1));
+	if (res == NULL)
 		return (NULL);
-	head->content = content;
-	head->next = tail;
-	return (head);
-}
-
-void	stack_destroy(t_stack *head)
-{
-	if (!head)
-		return ;
-	stack_destroy(head->next);
-	free(head);
+	i = 0;
+	while (s1[i])
+	{
+		res[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		res[i] = s2[j];
+		j++;
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }

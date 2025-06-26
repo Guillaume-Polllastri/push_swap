@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 18:17:42 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/26 13:54:10 by gpollast         ###   ########.fr       */
+/*   Created: 2025/04/28 10:50:39 by gpollast          #+#    #+#             */
+/*   Updated: 2025/05/07 10:09:14 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "libft.h"
 
-t_stack	*stack_push(t_stack *tail, int content)
+size_t	ft_strlcat(char *dst, const char *src, size_t siz)
 {
-	t_stack	*head;
+	size_t	i;
+	size_t	j;
+	size_t	dst_len;
+	size_t	src_len;
 
-	head = malloc(sizeof(t_stack));
-	if (!head)
-		return (NULL);
-	head->content = content;
-	head->next = tail;
-	return (head);
-}
-
-void	stack_destroy(t_stack *head)
-{
-	if (!head)
-		return ;
-	stack_destroy(head->next);
-	free(head);
+	i = 0;
+	j = 0;
+	while (i < siz && dst[i])
+		i++;
+	dst_len = i;
+	src_len = ft_strlen(src);
+	if (dst_len == siz)
+		return (siz + src_len);
+	while ((i + 1) < siz && src[j])
+	{
+		dst[i] = src[j];
+		i++;
+		j++;
+	}
+	dst[i] = '\0';
+	return (dst_len + src_len);
 }

@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 18:17:42 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/26 13:54:10 by gpollast         ###   ########.fr       */
+/*   Created: 2025/04/30 14:07:55 by gpollast          #+#    #+#             */
+/*   Updated: 2025/05/07 10:09:14 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "libft.h"
 
-t_stack	*stack_push(t_stack *tail, int content)
+char	*ft_strdup(const char *s)
 {
-	t_stack	*head;
+	char	*nstr;
+	size_t	len;
+	size_t	i;
 
-	head = malloc(sizeof(t_stack));
-	if (!head)
+	len = ft_strlen(s);
+	nstr = (char *) malloc(sizeof(char) * (len + 1));
+	if (!nstr)
 		return (NULL);
-	head->content = content;
-	head->next = tail;
-	return (head);
-}
-
-void	stack_destroy(t_stack *head)
-{
-	if (!head)
-		return ;
-	stack_destroy(head->next);
-	free(head);
+	i = 0;
+	while (s[i])
+	{
+		nstr[i] = s[i];
+		i++;
+	}
+	nstr[i] = '\0';
+	return (nstr);
 }

@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 18:17:42 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/26 13:54:10 by gpollast         ###   ########.fr       */
+/*   Created: 2025/05/01 14:16:58 by gpollast          #+#    #+#             */
+/*   Updated: 2025/05/07 13:02:32 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "libft.h"
 
-t_stack	*stack_push(t_stack *tail, int content)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	t_stack	*head;
+	char	*ns;
 
-	head = malloc(sizeof(t_stack));
-	if (!head)
+	if (len >= (ft_strlen(s) - start))
+		len = ft_strlen(s) - start;
+	if (start >= ft_strlen(s))
+		len = 0;
+	ns = (char *) ft_calloc(len + 1, sizeof(char));
+	if (!ns)
 		return (NULL);
-	head->content = content;
-	head->next = tail;
-	return (head);
-}
-
-void	stack_destroy(t_stack *head)
-{
-	if (!head)
-		return ;
-	stack_destroy(head->next);
-	free(head);
+	if (start >= ft_strlen(s))
+		return (ns);
+	ft_strlcpy(ns, s + start, len + 1);
+	return (ns);
 }

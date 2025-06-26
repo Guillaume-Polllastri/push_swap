@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 18:17:42 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/26 13:54:10 by gpollast         ###   ########.fr       */
+/*   Created: 2025/04/26 23:20:05 by gpollast          #+#    #+#             */
+/*   Updated: 2025/05/07 10:09:14 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "libft.h"
 
-t_stack	*stack_push(t_stack *tail, int content)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	t_stack	*head;
+	const char	*ptr_src;
+	char		*ptr_dest;
+	size_t		i;
 
-	head = malloc(sizeof(t_stack));
-	if (!head)
-		return (NULL);
-	head->content = content;
-	head->next = tail;
-	return (head);
-}
-
-void	stack_destroy(t_stack *head)
-{
-	if (!head)
-		return ;
-	stack_destroy(head->next);
-	free(head);
+	if (!dest && !src)
+		return (dest);
+	ptr_src = (const char *) src;
+	ptr_dest = (char *) dest;
+	i = 0;
+	if (ptr_dest < ptr_src)
+	{
+		while (n > 0)
+		{
+			ptr_dest[i] = ptr_src[i];
+			i++;
+			n--;
+		}
+	}
+	else
+	{
+		while (n-- > 0)
+			ptr_dest[n] = ptr_src[n];
+	}
+	return (dest);
 }
