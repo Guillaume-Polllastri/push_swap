@@ -1,46 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   instruct.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 18:17:42 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/27 16:52:08 by gpollast         ###   ########.fr       */
+/*   Created: 2025/06/26 14:13:09 by gpollast          #+#    #+#             */
+/*   Updated: 2025/06/27 14:57:40 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
+#include <stdio.h>
 
-t_stack	*stack_push(t_stack *tail, int content)
+t_stack *swap(t_stack *stack)
 {
-	t_stack	*head;
-
-	head = malloc(sizeof(t_stack));
-	if (!head)
-		return (NULL);
-	head->content = content;
-	head->next = tail;
-	return (head);
+    int tmp;
+    
+    if (!stack || !stack->next)
+        return stack;
+    tmp = stack->content;
+    stack->content = stack->next->content;
+    stack->next->content = tmp;
+    return (stack);
 }
 
-t_stack *stack_pop(t_stack *stack)
+t_stack  *p(t_stack *in, t_stack *out)
 {
-    t_stack *next;
-
-    if (!stack)
-        return NULL;
-
-    next = stack->next;
-    free(stack);
-    return next;
-}
-
-void	stack_destroy(t_stack *head)
-{
-	if (!head)
-		return ;
-	stack_destroy(head->next);
-	free(head);
+    in = stack_push(in, out->content);
+    out = stack_pop(out);
+    return (in);
 }

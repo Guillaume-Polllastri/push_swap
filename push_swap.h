@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:40:17 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/25 20:59:04 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/06/27 14:40:42 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ typedef struct s_stack
 
 t_stack	*stack_push(t_stack *tail, int content);
 void	stack_destroy(t_stack *head);
-
+t_stack	*stack_pop(t_stack *stack);
+t_stack	*swap(t_stack *stack);
+t_stack	*p(t_stack *in, t_stack *out);
 #endif
