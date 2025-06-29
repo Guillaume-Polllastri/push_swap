@@ -1,45 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   operation2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 18:17:42 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/29 18:01:13 by gpollast         ###   ########.fr       */
+/*   Created: 2025/06/29 18:41:44 by gpollast          #+#    #+#             */
+/*   Updated: 2025/06/29 19:16:58 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
+#include <stdio.h>
 
-t_stack	*stack_push(t_stack *tail, int content)
+static	void	push_elem(t_stack **in, t_stack **out)
 {
-	t_stack	*head;
-
-	head = malloc(sizeof(t_stack));
-	if (!head)
-		return (NULL);
-	head->content = content;
-	head->next = tail;
-	return (head);
-}
-
-t_stack	*stack_pop(t_stack *stack)
-{
-	t_stack	*next;
-
-	if (!stack)
-		return (NULL);
-	next = stack->next;
-	free(stack);
-	return (next);
-}
-
-void	stack_destroy(t_stack *head)
-{
-	if (!head)
+	if (!(*out))
 		return ;
-	stack_destroy(head->next);
-	free(head);
+	*in = stack_push(*in, (*out)->content);
+	*out = stack_pop(*out);
+}
+
+void	pa(t_stack **a, t_stack **b)
+{
+	if (!b)
+		return ;
+	push_elem(a, b);
+}
+
+void	pb(t_stack **a, t_stack **b)
+{
+	if (!a)
+		return ;
+	push_elem(b, a);
 }

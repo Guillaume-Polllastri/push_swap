@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:06:49 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/27 16:54:40 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/06/30 01:04:52 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int ac, char **av)
 		tmp_a = tmp_a->next;
 	}
 	printf("- -\na b\n\nswap a\n");
-	a = swap(a);
+	sa(a);
 	tmp_a = a;
 	while (tmp_a)
 	{
@@ -45,7 +45,9 @@ int	main(int ac, char **av)
 		tmp_a = tmp_a->next;
 	}
 	printf("- -\na b\n\n");
-	a = stack_pop(a);
+	// pb(&a, &b);
+	// printf("%d\n", b->content);
+	rra(&a);
 	tmp_a = a;
 	while (tmp_a)
 	{

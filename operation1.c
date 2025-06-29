@@ -1,45 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   operation1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 18:17:42 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/29 18:01:13 by gpollast         ###   ########.fr       */
+/*   Created: 2025/06/26 14:13:09 by gpollast          #+#    #+#             */
+/*   Updated: 2025/06/30 00:44:35 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 
-t_stack	*stack_push(t_stack *tail, int content)
+static t_stack	*swap(t_stack *stack)
 {
-	t_stack	*head;
+	int	tmp;
 
-	head = malloc(sizeof(t_stack));
-	if (!head)
-		return (NULL);
-	head->content = content;
-	head->next = tail;
-	return (head);
+	if (!stack || !stack->next)
+		return (stack);
+	tmp = stack->content;
+	stack->content = stack->next->content;
+	stack->next->content = tmp;
+	return (stack);
 }
 
-t_stack	*stack_pop(t_stack *stack)
+void	sa(t_stack *a)
 {
-	t_stack	*next;
-
-	if (!stack)
-		return (NULL);
-	next = stack->next;
-	free(stack);
-	return (next);
+	swap(a);
 }
 
-void	stack_destroy(t_stack *head)
+void	sb(t_stack *b)
 {
-	if (!head)
-		return ;
-	stack_destroy(head->next);
-	free(head);
+	swap(b);
 }
+
+void	ss(t_stack *a, t_stack *b)
+{
+	swap(a);
+	swap(b);
+}
+

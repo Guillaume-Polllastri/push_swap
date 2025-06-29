@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:40:17 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/27 14:40:42 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/06/30 00:52:20 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,19 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+int		ft_stacksize(t_stack *stack);
+t_stack	*ft_stacklast(t_stack *stack);
 t_stack	*stack_push(t_stack *tail, int content);
 void	stack_destroy(t_stack *head);
 t_stack	*stack_pop(t_stack *stack);
-t_stack	*swap(t_stack *stack);
-t_stack	*p(t_stack *in, t_stack *out);
+void	sa(t_stack *a);
+void	sb(t_stack *b);
+void	ss(t_stack *a, t_stack *b);
+void	pa(t_stack **a, t_stack **b);
+void	pb(t_stack **a, t_stack **b);
+void	ra(t_stack **a);
+void	rb(t_stack **b);
+void	rr(t_stack **a, t_stack **b);
+void	rra(t_stack **a);
+
 #endif

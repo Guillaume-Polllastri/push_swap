@@ -1,45 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   operation3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 18:17:42 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/29 18:01:13 by gpollast         ###   ########.fr       */
+/*   Created: 2025/06/29 20:00:12 by gpollast          #+#    #+#             */
+/*   Updated: 2025/06/30 00:42:10 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
+#include <stdio.h>
 
-t_stack	*stack_push(t_stack *tail, int content)
+static void	rotate(t_stack **stack)
 {
 	t_stack	*head;
 
-	head = malloc(sizeof(t_stack));
-	if (!head)
-		return (NULL);
-	head->content = content;
-	head->next = tail;
-	return (head);
-}
-
-t_stack	*stack_pop(t_stack *stack)
-{
-	t_stack	*next;
-
-	if (!stack)
-		return (NULL);
-	next = stack->next;
-	free(stack);
-	return (next);
-}
-
-void	stack_destroy(t_stack *head)
-{
-	if (!head)
+	if (!(*stack) || !(*stack)->next)
 		return ;
-	stack_destroy(head->next);
-	free(head);
+	head = *stack;
+	*stack = head->next;
+	head->next = NULL;
+	ft_stacklast(*stack)->next = head;
+}
+
+void	ra(t_stack **a)
+{
+	rotate(a);
+}
+
+void	rb(t_stack **b)
+{
+	rotate(b);
+}
+
+void	rr(t_stack **a, t_stack **b)
+{
+	rotate(a);
+	rotate(b);
 }
