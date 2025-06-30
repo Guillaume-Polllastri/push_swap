@@ -6,7 +6,7 @@
 #    By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/30 10:11:30 by gpollast          #+#    #+#              #
-#    Updated: 2025/06/30 00:52:33 by gpollast         ###   ########.fr        #
+#    Updated: 2025/06/30 11:48:47 by gpollast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,10 @@ NAME = push_swap
 SRC = 	main.c \
 		stack.c \
 		utils.c \
-		operation1.c \
-		operation2.c \
-		operation3.c \
-		operation4.c
+		instruction1.c \
+		instruction2.c \
+		instruction3.c \
+		instruction4.c
 
 OBJ = $(SRC:.c=.o)
 

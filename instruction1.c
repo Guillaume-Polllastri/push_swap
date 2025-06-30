@@ -1,46 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation4.c                                       :+:      :+:    :+:   */
+/*   instruction1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/30 00:44:22 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/30 10:11:15 by gpollast         ###   ########.fr       */
+/*   Created: 2025/06/26 14:13:09 by gpollast          #+#    #+#             */
+/*   Updated: 2025/06/30 00:44:35 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 
-static void	reverse_rotate(t_stack **stack)
+static t_stack	*swap(t_stack *stack)
 {
-	t_stack	*tmp;
-	t_stack	*end;
+	int	tmp;
 
-	if (!(*stack) || !(*stack)->next)
-		return ;
-	tmp = *stack;
-	end = ft_stacklast((*stack));
-	while ((*stack)->next->next)
-		*stack = (*stack)->next;
-	end->next = tmp;
-	(*stack)->next = NULL;
-	*stack = end;
+	if (!stack || !stack->next)
+		return (stack);
+	tmp = stack->content;
+	stack->content = stack->next->content;
+	stack->next->content = tmp;
+	return (stack);
 }
 
-void	rra(t_stack **a)
+void	sa(t_stack *a)
 {
-	reverse_rotate(a);
+	swap(a);
 }
 
-void	rrb(t_stack **b)
+void	sb(t_stack *b)
 {
-	reverse_rotate(b);
+	swap(b);
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	ss(t_stack *a, t_stack *b)
 {
-	reverse_rotate(a);
-	reverse_rotate(b);
+	swap(a);
+	swap(b);
 }
+
