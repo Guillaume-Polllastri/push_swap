@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 00:44:22 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/30 01:06:38 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/06/30 10:07:41 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void	reverse_rotate(t_stack **stack)
 		return ;
 	tmp = *stack;
 	end = ft_stacklast((*stack));
-	end->next = tmp;
 	while ((*stack)->next->next)
 		*stack = (*stack)->next;
+	end->next = tmp;
 	(*stack)->next = NULL;
 	*stack = end;
 }
