@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:06:49 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/01 12:07:48 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/01 12:09:11 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int ac, char **av)
 	}
 	i = 0;
 	new_tab = tab_index(tab, ac - 1);
-	if (new_tab)
+	if (!new_tab)
 		return (free(tab), free(new_tab), free_stacks(&a), 0);
 	while (i < ac - 1)
 	{
