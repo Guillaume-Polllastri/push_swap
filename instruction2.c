@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 11:51:30 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/30 11:51:33 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/01 19:51:43 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,22 @@ static	void	push_elem(t_stack **in, t_stack **out)
 {
 	if (!(*out))
 		return ;
-	*in = stack_push(*in, (*out)->content);
+	*in = stack_push(*in, *out);
 	*out = stack_pop(*out);
 }
 
 void	pa(t_stack **a, t_stack **b)
 {
-	if (!b)
+	if (!b || !(*b))
 		return ;
 	push_elem(a, b);
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack **a, t_stack **b)
 {
-	if (!a)
+	if (!a || !(*a))
 		return ;
 	push_elem(b, a);
+	write(1, "pb\n", 3);
 }

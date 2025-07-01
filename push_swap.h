@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:40:17 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/01 12:04:29 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/01 20:07:36 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 typedef struct s_stack
 {
 	int				content;
+	int				index;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -23,8 +24,9 @@ typedef struct s_stack
 
 int		ft_stacksize(t_stack *stack);
 t_stack	*ft_stacklast(t_stack *stack);
-t_stack	*stack_push(t_stack *tail, int content);
+t_stack	*stack_push(t_stack *tail, t_stack *element);
 void	stack_destroy(t_stack *head);
+t_stack	*new_stack(int content);
 t_stack	*stack_pop(t_stack *stack);
 void	free_stacks(t_stack **stack);
 
@@ -44,6 +46,8 @@ void	rrr(t_stack **a, t_stack **b);
 
 /* ************************************************************************** */
 
-int		*tab_index(int *tab, int nb_elmt);
+void	fill_stack_index(t_stack **a, int *tab, int nb_elmt);
+int		*fill_tab(t_stack **a, int nb_elmt);
+int		radix_sort(t_stack **a, t_stack **b, int nb_elmt);
 
 #endif

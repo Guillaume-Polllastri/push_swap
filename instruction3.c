@@ -6,13 +6,13 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 11:51:44 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/30 11:51:46 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/01 19:12:09 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
-#include <stdio.h>
+#include <unistd.h>
 
 static void	rotate(t_stack **stack)
 {
@@ -29,15 +29,18 @@ static void	rotate(t_stack **stack)
 void	ra(t_stack **a)
 {
 	rotate(a);
+	write(1, "ra\n", 3);
 }
 
 void	rb(t_stack **b)
 {
 	rotate(b);
+	write(1, "rb\n", 3);
 }
 
 void	rr(t_stack **a, t_stack **b)
 {
 	rotate(a);
 	rotate(b);
+	write(1, "rr\n", 3);
 }
