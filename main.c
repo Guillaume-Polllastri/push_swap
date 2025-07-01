@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:06:49 by gpollast          #+#    #+#             */
-/*   Updated: 2025/06/30 01:04:52 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/01 12:07:48 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,41 +18,37 @@
 int	main(int ac, char **av)
 {
 	t_stack	*a;
-	// t_stack	*b;
-	t_stack	*tmp_a;
+	int		*tab;
+	int		*new_tab;
 	int		i;
 
 	a = NULL;
-	// b = NULL;
+	tab = malloc(sizeof(int) * (ac - 1));
+	if (!tab)
+		return (0);
 	i = 1;
 	while (i < ac)
 	{
-		a = stack_push(a, ft_atoi(av[i]));
+		tab[i - 1] = ft_atoi(av[i]);
 		i++;
 	}
-	tmp_a = a;
-	while (tmp_a)
+	i = ac - 1;
+	while (i > 0)
 	{
-		printf("%d\n", tmp_a->content);
-		tmp_a = tmp_a->next;
+		a = stack_push(a, ft_atoi(av[i]));
+		i--;
 	}
-	printf("- -\na b\n\nswap a\n");
-	sa(a);
-	tmp_a = a;
-	while (tmp_a)
+	i = 0;
+	new_tab = tab_index(tab, ac - 1);
+	if (new_tab)
+		return (free(tab), free(new_tab), free_stacks(&a), 0);
+	while (i < ac - 1)
 	{
-		printf("%d\n", tmp_a->content);
-		tmp_a = tmp_a->next;
+		printf("index : %d\n", tab[i]);
+		i++;
 	}
-	printf("- -\na b\n\n");
-	// pb(&a, &b);
-	// printf("%d\n", b->content);
-	rra(&a);
-	tmp_a = a;
-	while (tmp_a)
-	{
-		printf("%d\n", tmp_a->content);
-		tmp_a = tmp_a->next;
-	}
+	free(tab);
+	free(new_tab);
+	free_stacks(&a);
 	return (0);
 }
