@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 10:51:16 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/01 21:23:01 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/03 14:35:26 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ int	radix_sort(t_stack **a, t_stack **b, int nb_elmt)
 			pa(a, b);
 			count++;
 		}
+		if (is_sort_stack(a))
+			return (count);
 		i++;
 		printf("\n");
 	}

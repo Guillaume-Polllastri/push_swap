@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:40:17 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/01 20:07:36 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/03 14:33:55 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	stack_destroy(t_stack *head);
 t_stack	*new_stack(int content);
 t_stack	*stack_pop(t_stack *stack);
 void	free_stacks(t_stack **stack);
+int		is_sort_stack(t_stack **stack);
 
 /* ************************************************************************** */
 
