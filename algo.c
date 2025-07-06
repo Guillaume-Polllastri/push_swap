@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 10:51:16 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/03 14:35:26 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/06 19:10:55 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,28 @@ static int	index_element(int *tab, int element, int nb_elmt)
 		i++;
 	}
 	return (index);
+}
+
+static int	where_is_max_index(t_stack *stack)
+{
+	int	max;
+	int	i;
+	int	pos;
+
+	max = stack->index;
+	i = 0;
+	pos = 0;
+	while (stack)
+	{
+		if (max < stack->index)
+		{
+			max = stack->index;
+			pos = i;
+		}
+		stack = stack->next;
+		i++;
+	}
+	return (pos);
 }
 
 int	*fill_tab(t_stack **a, int nb_elmt)
@@ -67,72 +89,69 @@ void	fill_stack_index(t_stack **a, int *tab, int nb_elmt)
 	}
 }
 
-static int	max_bits(int *tab, int nb_elmt)
+int	k_sort(t_stack **a, t_stack **b, int nb_elmt)
 {
-	int	max;
-	int	i;
-	int	bit;
-
-	i = 0;
-	max = tab[0];
-	while (i < nb_elmt)
-	{
-		if (max < tab[i])
-			max = tab[i];
-		i++;
-	}
-	i = 7;
-	while (i >= 0)
-	{
-		bit = ((max >> i) & 1);
-		if (bit == 1)
-			return (i);
-		i--;
-	}
-	return (0);
-}
-
-int	radix_sort(t_stack **a, t_stack **b, int nb_elmt)
-{
-	int		i;
-	int		j;
-	char	bit;
-	int		*tab;
 	int		count;
+	int		*tab;
+	int		i;
+	double	range;
+	int		index_b;
 
-	i = 0;
-	bit = 0;
 	count = 0;
 	tab = fill_tab(a, nb_elmt);
 	fill_stack_index(a, tab, nb_elmt);
-	while (i < max_bits(tab, nb_elmt))
+	free(tab);
+	i = 0;
+	range = sqrt((double) nb_elmt) * 1.5;
+	while (*a)
 	{
-		j = 0;
-		while (j < nb_elmt)
+		if ((*a)->index <= i)
 		{
-			bit = (((*a)->index >> i) & 1);
-			if (bit == 0)
-			{
-				pb(a, b);
-				count++;
-			}
-			else
-			{
-				ra(a);
-				count++;
-			}
-			j++;
+			pb(a, b);
+			i++;
+			rb(b);
+			count += 2;
 		}
-		while ((*b))
+		else if ((*a)->index <= (i + range))
+		{
+			pb(a, b);
+			i++;
+			count++;
+		}
+		else if ((*a)->index > (i + range))
+		{
+			ra(a);
+			count++;
+		}
+	}
+	while (*b)
+	{
+		index_b = where_is_max_index(*b);
+		if (!index_b)
 		{
 			pa(a, b);
 			count++;
 		}
-		if (is_sort_stack(a))
-			return (count);
-		i++;
-		printf("\n");
+		if (index_b <= nb_elmt - index_b)
+		{
+			i = 0;
+			while (i < index_b)
+			{
+				rb(b);
+				count++;
+				i++;
+			}
+		}
+		else
+		{
+			i = 0;
+			while (i < (nb_elmt - index_b))
+			{
+				rrb(b);
+				count++;
+				i++;
+			}
+		}
 	}
-	free(tab);
 	return (count);
 }

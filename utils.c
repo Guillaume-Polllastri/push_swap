@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 00:39:21 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/03 14:34:11 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/06 19:11:54 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,20 @@ t_stack	*ft_stacklast(t_stack *stack)
 	return (stack);
 }
 
-int	is_sort_stack(t_stack **stack)
+double	sqrt(double nb)
 {
-	t_stack	*tmp;
+	double	x;
+	double	guess;
+	double	epsilon;
 
-	tmp = *stack;
-	while (tmp && tmp->next)
-	{
-		if (tmp->content > tmp->next->content)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
+	if (nb < 0)
+		return (-1);
+	x = nb;
+	guess = nb / 2.0;
+	epsilon = 0.000001;
+	if (nb == 0 || nb == 1)
+		return (nb);
+	while ((guess * guess - x) > epsilon || (guess * guess - x) < -epsilon)
+		guess = (guess + x / guess) / 2.0;
+	return (guess);
 }

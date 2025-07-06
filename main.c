@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:06:49 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/01 20:09:42 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/06 17:58:36 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,22 @@
 #include <stdio.h>
 #include "push_swap.h"
 #include "libft.h"
+
+static int	is_sort_stack(t_stack**stack)
+{
+	int	i;
+
+	i = (*stack)->content;
+	while ((*stack))
+	{
+		if (i <= (*stack)->content)
+			i = (*stack)->content;
+		else
+			return (0);
+		*stack = (*stack)->next;
+	}
+	return (1);
+}
 
 int	main(int ac, char **av)
 {
@@ -34,15 +50,18 @@ int	main(int ac, char **av)
 		a = new;
 		i--;
 	}
-	res = radix_sort(&a, &b, ac - 1);
+	res = k_sort(&a, &b, ac - 1);
 	tmp_a = a;
 	while (tmp_a)
 	{
 		printf("%d\n", tmp_a->content);
-		// printf("index : %d\n", tmp_a->index);
 		tmp_a = tmp_a->next;
 	}
 	printf("%d operations\n", res);
+	if (is_sort_stack(&a) == 1)
+		printf("La liste est triee\n");
+	else
+		printf("NOP\n");
 	free_stacks(&a);
 	return (0);
 }
