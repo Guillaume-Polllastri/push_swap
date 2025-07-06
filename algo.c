@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 10:51:16 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/06 19:10:55 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/06 19:14:04 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,25 @@ static int	index_element(int *tab, int element, int nb_elmt)
 	return (index);
 }
 
-static int	where_is_max_index(t_stack *stack)
+static t_info_stack	where_is_max_index(t_stack *stack)
 {
-	int	max;
-	int	i;
-	int	pos;
+	t_info_stack	info;
+	int				i;
 
-	max = stack->index;
+	info.max = stack->index;
 	i = 0;
-	pos = 0;
+	info.pos = 0;
 	while (stack)
 	{
-		if (max < stack->index)
+		if (info.max < stack->index)
 		{
-			max = stack->index;
-			pos = i;
+			info.max = stack->index;
+			info.pos = i;
 		}
 		stack = stack->next;
 		i++;
 	}
-	return (pos);
+	return (info);
 }
 
 int	*fill_tab(t_stack **a, int nb_elmt)
@@ -89,13 +88,26 @@ void	fill_stack_index(t_stack **a, int *tab, int nb_elmt)
 	}
 }
 
+static int	stack_size(t_stack *stack)
+{
+	int	size;
+
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
+}
+
 int	k_sort(t_stack **a, t_stack **b, int nb_elmt)
 {
 	int		count;
 	int		*tab;
 	int		i;
 	double	range;
-	int		index_b;
+	t_info_stack	info;
 
 	count = 0;
 	tab = fill_tab(a, nb_elmt);
@@ -105,20 +117,18 @@ int	k_sort(t_stack **a, t_stack **b, int nb_elmt)
 	range = sqrt((double) nb_elmt) * 1.5;
 	while (*a)
 	{
-		if ((*a)->index <= i)
+		if ((*a)->index <= (i + range))
 		{
 			pb(a, b);
-			i++;
-			rb(b);
-			count += 2;
-		}
-		else if ((*a)->index <= (i + range))
-		{
-			pb(a, b);
-			i++;
 			count++;
+			if ((*b)->index <= i)
+			{
+				rb(b);
+				count++;
+			}
+			i++;
 		}
-		else if ((*a)->index > (i + range))
+		else
 		{
 			ra(a);
 			count++;
@@ -126,32 +136,25 @@ int	k_sort(t_stack **a, t_stack **b, int nb_elmt)
 	}
 	while (*b)
 	{
-		index_b = where_is_max_index(*b);
-		if (!index_b)
+		info = where_is_max_index(*b);
+		if (info.pos <= stack_size(*b) / 2)
 		{
-			pa(a, b);
-			count++;
-		}
-		if (index_b <= nb_elmt - index_b)
-		{
-			i = 0;
-			while (i < index_b)
+			while ((*b)->index != info.max)
 			{
 				rb(b);
 				count++;
-				i++;
 			}
 		}
 		else
 		{
-			i = 0;
-			while (i < (nb_elmt - index_b))
+			while ((*b)->index != info.max)
 			{
 				rrb(b);
 				count++;
-				i++;
 			}
 		}
+		pa(a, b);
+		count++;
 	}
 	return (count);
 }
