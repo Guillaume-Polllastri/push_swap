@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 00:39:21 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/06 19:14:09 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/07 16:54:01 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,18 @@ double	sqrt(double nb)
 	while ((guess * guess - x) > epsilon || (guess * guess - x) < -epsilon)
 		guess = (guess + x / guess) / 2.0;
 	return (guess);
+}
+
+int	check_duplicate(char **av, int nb_elmt)
+{
+	int	i;
+
+	i = 2;
+	while (i < nb_elmt)
+	{
+		if (av[1] == av[i])
+			return (0);
+		i++;
+	}
+	return (1);
 }

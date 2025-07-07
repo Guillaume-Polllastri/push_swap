@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:40:17 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/06 19:14:19 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/07 16:47:48 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_stack	*new_stack(int content);
 t_stack	*stack_pop(t_stack *stack);
 void	free_stacks(t_stack **stack);
 double	sqrt(double nb);
+int		check_duplicate(char **av, int nb_elmt);
 
 /* ************************************************************************** */
 
