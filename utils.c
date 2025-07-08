@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 00:39:21 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/07 16:54:01 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/08 15:20:47 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,19 @@ double	sqrt(double nb)
 int	check_duplicate(char **av, int nb_elmt)
 {
 	int	i;
+	int	j;
 
-	i = 2;
-	while (i < nb_elmt)
+	j = 1;
+	while (j < nb_elmt)
 	{
-		if (av[1] == av[i])
-			return (0);
-		i++;
+		i = j + 1;
+		while (i <= nb_elmt)
+		{
+			if (ft_atoi(av[j]) == ft_atoi(av[i]))
+				return (0);
+			i++;
+		}
+		j++;
 	}
 	return (1);
 }

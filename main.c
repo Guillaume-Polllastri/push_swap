@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:06:49 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/07 16:54:42 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/08 14:47:16 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,14 @@ static int	is_int_args(char *str)
 	int	i;
 
 	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
 	while (str[i])
 	{
-		if (!(str[i] >= '0' && str[i] <= '9'))
+		if (!(str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+			&& (!(str[i] >= '0' && str[i] <= '9')))
 			return (0);
 		i++;
 	}
@@ -57,11 +62,11 @@ int	main(int ac, char **av)
 	while (i < ac)
 	{
 		if (!is_int_args(av[i]))
-			return (1);
+			return (write(2, "Error\n", 6), 1);
 		i++;
 	}
 	if (!check_duplicate(av, (ac - 1)))
-		return (1);
+		return (write(2, "Error\nDuplicate\n", 16) , 1);
 	i = 0;
 	a = NULL;
 	b = NULL;
