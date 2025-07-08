@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:06:49 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/08 14:47:16 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/08 18:08:34 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	main(int ac, char **av)
 	// t_stack	*tmp_a;
 	t_stack	*new;
 	int		i;
+	char	*str;
 
 	i = 1;
 	while (i < ac)
@@ -65,8 +66,13 @@ int	main(int ac, char **av)
 			return (write(2, "Error\n", 6), 1);
 		i++;
 	}
+	i = 1;
+	while (i < ac)
+	{
+		ft_substr(av[i], );
+	}
 	if (!check_duplicate(av, (ac - 1)))
-		return (write(2, "Error\nDuplicate\n", 16) , 1);
+		return (write(2, "Error\nDuplicated numbers\n", 16) , 1);
 	i = 0;
 	a = NULL;
 	b = NULL;
