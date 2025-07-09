@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:06:49 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/09 17:45:21 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:05:08 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-static int	is_sort_stack(t_stack**stack)
+int	is_sort_stack(t_stack**stack)
 {
 	int	i;
 

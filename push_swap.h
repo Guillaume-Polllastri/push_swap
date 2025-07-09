@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:40:17 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/09 11:59:04 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:06:05 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	free_stacks(t_stack **stack);
 double	sqrt(double nb);
 int		check_duplicate(char **av, int nb_elmt);
 char	**split_join(char **split1, char **split2);
+int		is_sort_stack(t_stack**stack);
 
 /* ************************************************************************** */
 
