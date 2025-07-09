@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 10:51:16 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/07 16:48:02 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:11:52 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,10 @@ static int	stack_size(t_stack *stack)
 
 int	k_sort(t_stack **a, t_stack **b, int nb_elmt)
 {
-	int		count;
-	int		*tab;
-	int		i;
-	double	range;
+	int				count;
+	int				*tab;
+	int				i;
+	double			range;
 	t_info_stack	info;
 
 	count = 0;
