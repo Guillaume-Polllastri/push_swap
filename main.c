@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:06:49 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/09 18:05:08 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:42:24 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_stack	*tmp_a;
+	// t_stack	*tmp_a;
 	t_stack	*new;
 	int		i;
 	char	**split;
@@ -96,17 +96,17 @@ int	main(int ac, char **av)
 	}
 	if (k_sort(&a, &b, count) == -1)
 		return (free_stacks(&a), 1);
-	tmp_a = a;
-	while (tmp_a)
-	{
-		printf("%d\n", tmp_a->content);
-		tmp_a = tmp_a->next;
-	}
+	// tmp_a = a;
+	// while (tmp_a)
+	// {
+	// 	printf("%d\n", tmp_a->content);
+	// 	tmp_a = tmp_a->next;
+	// }
 	// printf("%d operations\n", k_sort(&a, &b, ac - 1));
-	if (is_sort_stack(&a) == 1)
-		printf("La liste est triee\n");
-	else
-		printf("NOP\n");
+	// if (is_sort_stack(&a) == 1)
+	// 	printf("La liste est triee\n");
+	// else
+	// 	printf("NOP\n");
 	free_stacks(&a);
 	return (0);
 }
