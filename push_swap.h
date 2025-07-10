@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:40:17 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/10 14:10:02 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/10 15:02:58 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void			rrr(t_stack **a, t_stack **b);
 
 /* ************************************************************************** */
 
+int				cond_sort(t_stack **a, t_stack **b, int nb_elmt);
 void			fill_stack_index(t_stack **a, int *tab, int nb_elmt);
 int				*fill_tab(t_stack **a, int nb_elmt);
 int				k_sort(t_stack **a, t_stack **b, int nb_elmt);

@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:55:04 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/10 11:37:25 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/10 15:03:47 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static int	is_sort_stack(t_stack**stack)
 
 int	cond_sort(t_stack **a, t_stack **b, int nb_elmt)
 {
+	(void)b;
 	if (nb_elmt == 1)
 	{
 		return (1);

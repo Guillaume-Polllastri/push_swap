@@ -6,7 +6,7 @@
 #    By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/30 10:11:30 by gpollast          #+#    #+#              #
-#    Updated: 2025/07/10 14:35:46 by gpollast         ###   ########.fr        #
+#    Updated: 2025/07/10 15:03:25 by gpollast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC = 	main.c \
 		src/instruction3.c \
 		src/instruction4.c \
 		src/algo.c \
+		src/algo_condition.c \
 		src/algo_utils.c
 
 OBJ = $(SRC:.c=.o)
