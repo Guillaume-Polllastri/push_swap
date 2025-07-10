@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:40:17 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/10 18:35:27 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/11 00:41:25 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_stack
 typedef struct s_info_stack
 {
 	int	max;
+	int	min;
 	int	pos;
 }	t_info_stack;
 

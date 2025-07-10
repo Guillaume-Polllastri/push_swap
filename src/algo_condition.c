@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:55:04 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/10 17:57:43 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/11 01:19:14 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,36 @@ int	is_sort_stack(t_stack *stack)
 	return (1);
 }
 
+static t_info_stack	*min_stack(t_stack *stack)
+{
+	t_stack			*tmp;
+	t_info_stack	*info;
+	int				i;
+
+	tmp = stack;
+	info = malloc(sizeof(t_info_stack));
+	info->min = stack->content;
+	info->pos = 0;
+	i = 0;
+	while (tmp)
+	{
+		if (info->min > tmp->content)
+		{
+			info->min = tmp->content;
+			info->pos = i;
+		}
+		tmp = tmp->next;
+		i++;
+	}
+	return (info);
+}
+
 int	cond_sort(t_stack **a, t_stack **b, int nb_elmt)
 {
-	(void)b;
+	t_info_stack	*info;
+	int				i;
+	int				compteur;
+
 	if (nb_elmt == 1)
 	{
 		return (1);
@@ -41,6 +68,39 @@ int	cond_sort(t_stack **a, t_stack **b, int nb_elmt)
 		if (is_sort_stack(*a))
 			return (1);
 		ra(a);
+		return (1);
+	}
+	if (nb_elmt <= 5)
+	{
+		compteur = 3;
+		while (compteur > 0)
+		{
+			info = min_stack(*a);
+			if (info->pos <= (ft_stacksize(*a) / 2))
+			{
+				i = info->pos;
+				while (i)
+				{
+					ra(a);
+					i--;
+				}
+			}
+			else
+			{
+				i = ft_stacksize(*a) - info->pos;
+				while (i)
+				{
+					rra(a);
+					i--;
+				}
+			}
+			pb(a, b);
+			compteur--;
+		}
+		if (!is_sort_stack(*a))
+			ra(a);
+		while (*b)
+			pa(a, b);
 		return (1);
 	}
 	return (-1);

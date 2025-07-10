@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:06:49 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/10 17:57:11 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/10 20:06:20 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	main(int ac, char **av)
 	fill_stack(&a, args);
 	free_string_array(args->array);
 	if (is_sort_stack(a))
+		return (free(args), free_stacks(&a), 0);
+	if (cond_sort(&a, &b, args->size) != -1)
 		return (free(args), free_stacks(&a), 0);
 	if (k_sort(&a, &b, args->size) == -1)
 		return (free_stacks(&a), 1);
