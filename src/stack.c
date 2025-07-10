@@ -6,12 +6,12 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:17:42 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/07 10:26:42 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:33:03 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "libft.h"
+#include "../push_swap.h"
+#include "../libft/libft.h"
 
 t_stack	*stack_push(t_stack *tail, t_stack *element)
 {
@@ -24,6 +24,21 @@ t_stack	*stack_push(t_stack *tail, t_stack *element)
 	head->index = element->index;
 	head->next = tail;
 	return (head);
+}
+
+void	fill_stack(t_stack **a, t_args *args)
+{
+	t_stack	*new;
+	int		i;
+
+	i = args->size - 1;
+	while (i >= 0)
+	{
+		new = new_stack(ft_atoi(args->array[i]));
+		new->next = *a;
+		*a = new;
+		i--;
+	}
 }
 
 t_stack	*stack_pop(t_stack *stack)

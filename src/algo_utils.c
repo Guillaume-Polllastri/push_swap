@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo.c                                             :+:      :+:    :+:   */
+/*   algo_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 10:51:16 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/09 17:11:52 by gpollast         ###   ########.fr       */
+/*   Created: 2025/07/10 11:41:50 by gpollast          #+#    #+#             */
+/*   Updated: 2025/07/10 11:51:12 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include "push_swap.h"
-#include "libft.h"
+#include "../push_swap.h"
+#include "../libft/libft.h"
 
-static int	index_element(int *tab, int element, int nb_elmt)
+int	index_element(int *tab, int element, int nb_elmt)
 {
 	int	i;
 	int	index;
@@ -31,7 +29,7 @@ static int	index_element(int *tab, int element, int nb_elmt)
 	return (index);
 }
 
-static t_info_stack	where_is_max_index(t_stack *stack)
+t_info_stack	where_is_max_index(t_stack *stack)
 {
 	t_info_stack	info;
 	int				i;
@@ -86,75 +84,4 @@ void	fill_stack_index(t_stack **a, int *tab, int nb_elmt)
 		tmp_a = tmp_a->next;
 		i++;
 	}
-}
-
-static int	stack_size(t_stack *stack)
-{
-	int	size;
-
-	size = 0;
-	while (stack)
-	{
-		size++;
-		stack = stack->next;
-	}
-	return (size);
-}
-
-int	k_sort(t_stack **a, t_stack **b, int nb_elmt)
-{
-	int				count;
-	int				*tab;
-	int				i;
-	double			range;
-	t_info_stack	info;
-
-	count = 0;
-	tab = fill_tab(a, nb_elmt);
-	fill_stack_index(a, tab, nb_elmt);
-	free(tab);
-	i = 0;
-	range = sqrt((double) nb_elmt) * 1.5;
-	while (*a)
-	{
-		if ((*a)->index <= (i + range))
-		{
-			pb(a, b);
-			count++;
-			if ((*b)->index <= i)
-			{
-				rb(b);
-				count++;
-			}
-			i++;
-		}
-		else
-		{
-			ra(a);
-			count++;
-		}
-	}
-	while (*b)
-	{
-		info = where_is_max_index(*b);
-		if (info.pos <= stack_size(*b) / 2)
-		{
-			while ((*b)->index != info.max)
-			{
-				rb(b);
-				count++;
-			}
-		}
-		else
-		{
-			while ((*b)->index != info.max)
-			{
-				rrb(b);
-				count++;
-			}
-		}
-		pa(a, b);
-		count++;
-	}
-	return (count);
 }

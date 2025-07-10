@@ -6,13 +6,12 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 11:51:44 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/07 13:06:58 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/10 10:02:19 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "libft.h"
-#include "ft_printf.h"
+#include "../push_swap.h"
+#include "../libft/libft.h"
 
 static void	rotate(t_stack **stack)
 {
@@ -29,18 +28,18 @@ static void	rotate(t_stack **stack)
 void	ra(t_stack **a)
 {
 	rotate(a);
-	ft_printf("ra\n");
+	write(2, "ra\n", 3);
 }
 
 void	rb(t_stack **b)
 {
 	rotate(b);
-	ft_printf("rb\n");
+	write(2, "rb\n", 3);
 }
 
 void	rr(t_stack **a, t_stack **b)
 {
 	rotate(a);
 	rotate(b);
-	ft_printf("rr\n");
+	write(2, "rr\n", 3);
 }

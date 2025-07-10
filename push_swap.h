@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:40:17 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/09 18:06:05 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/10 14:10:02 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,38 +26,48 @@ typedef struct s_info_stack
 	int	pos;
 }	t_info_stack;
 
-/* ************************************************************************** */
-
-int		ft_stacksize(t_stack *stack);
-t_stack	*ft_stacklast(t_stack *stack);
-t_stack	*stack_push(t_stack *tail, t_stack *element);
-void	stack_destroy(t_stack *head);
-t_stack	*new_stack(int content);
-t_stack	*stack_pop(t_stack *stack);
-void	free_stacks(t_stack **stack);
-double	sqrt(double nb);
-int		check_duplicate(char **av, int nb_elmt);
-char	**split_join(char **split1, char **split2);
-int		is_sort_stack(t_stack**stack);
+typedef struct s_args
+{
+	char	**array;
+	int		size;
+}	t_args;
 
 /* ************************************************************************** */
 
-void	sa(t_stack *a);
-void	sb(t_stack *b);
-void	ss(t_stack *a, t_stack *b);
-void	pa(t_stack **a, t_stack **b);
-void	pb(t_stack **a, t_stack **b);
-void	ra(t_stack **a);
-void	rb(t_stack **b);
-void	rr(t_stack **a, t_stack **b);
-void	rra(t_stack **a);
-void	rrb(t_stack **b);
-void	rrr(t_stack **a, t_stack **b);
+int				ft_stacksize(t_stack *stack);
+t_stack			*ft_stacklast(t_stack *stack);
+t_stack			*stack_push(t_stack *tail, t_stack *element);
+void			stack_destroy(t_stack *head);
+t_stack			*new_stack(int content);
+t_stack			*stack_pop(t_stack *stack);
+void			free_stacks(t_stack **stack);
+void			free_string_array(char **array);
+double			sqrt(double nb);
+char			**string_array_concat(char **split1, char **split2);
+int				parse_args(t_args *args, int ac, char **av);
+int				validate_args(t_args *args);
+void			fill_stack(t_stack **a, t_args *args);
 
 /* ************************************************************************** */
 
-void	fill_stack_index(t_stack **a, int *tab, int nb_elmt);
-int		*fill_tab(t_stack **a, int nb_elmt);
-int		k_sort(t_stack **a, t_stack **b, int nb_elmt);
+void			sa(t_stack *a);
+void			sb(t_stack *b);
+void			ss(t_stack *a, t_stack *b);
+void			pa(t_stack **a, t_stack **b);
+void			pb(t_stack **a, t_stack **b);
+void			ra(t_stack **a);
+void			rb(t_stack **b);
+void			rr(t_stack **a, t_stack **b);
+void			rra(t_stack **a);
+void			rrb(t_stack **b);
+void			rrr(t_stack **a, t_stack **b);
+
+/* ************************************************************************** */
+
+void			fill_stack_index(t_stack **a, int *tab, int nb_elmt);
+int				*fill_tab(t_stack **a, int nb_elmt);
+int				k_sort(t_stack **a, t_stack **b, int nb_elmt);
+int				index_element(int *tab, int element, int nb_elmt);
+t_info_stack	where_is_max_index(t_stack *stack);
 
 #endif

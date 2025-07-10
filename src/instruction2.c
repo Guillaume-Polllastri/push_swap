@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_condition.c                                   :+:      :+:    :+:   */
+/*   instruction2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 17:55:04 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/09 18:07:25 by gpollast         ###   ########.fr       */
+/*   Created: 2025/06/30 11:51:30 by gpollast          #+#    #+#             */
+/*   Updated: 2025/07/10 11:25:44 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "push_swap.h"
-#include "libft.h"
+#include "../push_swap.h"
+#include "../libft/libft.h"
 
-int	cond_sort(t_stack **a, t_stack **b, int nb_elmt)
+static	void	push_elem(t_stack **in, t_stack **out)
 {
-	if (nb_elmt == 1)
-	{
-		return (0);
-	}
-	if (nb_elmt == 2)
-	{
-		if (is_sort_stack(a))
-			return (0);
-		ra(a);
-		return (1);
-	}
-	return (-1);
+	if (!(*out))
+		return ;
+	*in = stack_push(*in, *out);
+	*out = stack_pop(*out);
+}
+
+void	pa(t_stack **a, t_stack **b)
+{
+	if (!b || !(*b))
+		return ;
+	push_elem(a, b);
+	write(2, "pa\n", 3);
+}
+
+void	pb(t_stack **a, t_stack **b)
+{
+	if (!a || !(*a))
+		return ;
+	push_elem(b, a);
+	write(2, "pb\n", 3);
 }

@@ -1,36 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   algo_condition.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 15:06:49 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/10 11:22:48 by gpollast         ###   ########.fr       */
+/*   Created: 2025/07/09 17:55:04 by gpollast          #+#    #+#             */
+/*   Updated: 2025/07/10 11:37:25 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "libft/libft.h"
+#include "../push_swap.h"
+#include "../libft/libft.h"
 
-int	main(int ac, char **av)
+static int	is_sort_stack(t_stack**stack)
 {
-	t_stack	*a;
-	t_stack	*b;
-	t_args	*args;
+	int	i;
 
-	a = NULL;
-	b = NULL;
-	args = malloc(sizeof(t_args));
-	if (!parse_args(args, ac, av))
+	i = (*stack)->content;
+	while ((*stack))
+	{
+		if (i <= (*stack)->content)
+			i = (*stack)->content;
+		else
+			return (0);
+		*stack = (*stack)->next;
+	}
+	return (1);
+}
+
+int	cond_sort(t_stack **a, t_stack **b, int nb_elmt)
+{
+	if (nb_elmt == 1)
+	{
 		return (1);
-	if (!validate_args(args))
+	}
+	if (nb_elmt == 2)
+	{
+		if (is_sort_stack(a))
+			return (1);
+		ra(a);
 		return (1);
-	fill_stack(&a, args);
-	free_string_array(args->array);
-	if (k_sort(&a, &b, args->size) == -1)
-		return (free_stacks(&a), 1);
-	free(args);
-	free_stacks(&a);
-	return (0);
+	}
+	return (-1);
 }
