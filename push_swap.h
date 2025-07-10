@@ -6,12 +6,15 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:40:17 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/10 15:02:58 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:35:27 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# define STR_MAX_INT "2147483647"
+# define STR_MIN_INT "2147483648"
 
 typedef struct s_stack
 {
@@ -47,6 +50,7 @@ char			**string_array_concat(char **split1, char **split2);
 int				parse_args(t_args *args, int ac, char **av);
 int				validate_args(t_args *args);
 void			fill_stack(t_stack **a, t_args *args);
+int				is_sort_stack(t_stack *stack);
 
 /* ************************************************************************** */
 

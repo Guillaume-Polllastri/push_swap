@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 10:32:56 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/10 14:10:03 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/10 19:06:59 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,29 @@ static int	is_int_args(char *str)
 		i++;
 	while (str[i])
 	{
-		if (!(str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-			&& (!(str[i] >= '0' && str[i] <= '9')))
+		if (!(str[i] == ' ') && (!(str[i] >= '0' && str[i] <= '9')))
 			return (0);
 		i++;
 	}
 	return (1);
+}
+
+static int	check_int_value(char *str)
+{
+	char	*cmp;
+
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			cmp = STR_MIN_INT;
+		str++;
+	}
+	else
+		cmp = STR_MAX_INT;
+	if (ft_strlen(str) == ft_strlen(cmp))
+		return (ft_strncmp(cmp, str, ft_strlen(cmp)));
+	else
+		return (ft_strlen(cmp) - ft_strlen(str));
 }
 
 int	parse_args(t_args *args, int ac, char **av)
@@ -87,6 +104,8 @@ int	validate_args(t_args *args)
 	{
 		if (!is_int_args(args->array[i]))
 			return (write(2, "Error\n", 6), 0);
+		if (check_int_value(args->array[i]) < 0)
+			return (write(2, "Error\nArgument is not a int\n", 28), 0);
 		i++;
 	}
 	if (!check_duplicate(args->array, args->size))

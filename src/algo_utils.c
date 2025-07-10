@@ -6,12 +6,13 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 11:41:50 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/10 11:51:12 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:58:41 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include "../libft/libft.h"
+#include "stdio.h"
 
 int	index_element(int *tab, int element, int nb_elmt)
 {
@@ -57,7 +58,6 @@ int	*fill_tab(t_stack **a, int nb_elmt)
 	int		i;
 
 	tab = malloc(sizeof(int) * (nb_elmt));
-	i = 0;
 	if (!tab)
 		return (0);
 	i = 0;

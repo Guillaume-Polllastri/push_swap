@@ -6,12 +6,13 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:06:49 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/10 15:07:08 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:57:11 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
+#include <stdio.h>
 
 int	main(int ac, char **av)
 {
@@ -28,6 +29,8 @@ int	main(int ac, char **av)
 		return (1);
 	fill_stack(&a, args);
 	free_string_array(args->array);
+	if (is_sort_stack(a))
+		return (free(args), free_stacks(&a), 0);
 	if (k_sort(&a, &b, args->size) == -1)
 		return (free_stacks(&a), 1);
 	free(args);
