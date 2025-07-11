@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 10:32:56 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/11 09:21:22 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/11 09:26:40 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	validate_args(t_args *args)
 	while (i < args->size)
 	{
 		if (!is_int_args(args->array[i]))
-			return (write(2, "Error\nArgument is not a int", 28), 0);
+			return (write(2, "Error\nArgument is not a int\n", 28), 0);
 		if (check_int_value(args->array[i]) < 0)
 			return (write(2, "Error\nArgument is not a int\n", 28), 0);
 		i++;
