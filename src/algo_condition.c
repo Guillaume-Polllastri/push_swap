@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:55:04 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/11 01:19:14 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/11 09:19:27 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int	cond_sort(t_stack **a, t_stack **b, int nb_elmt)
 				}
 			}
 			pb(a, b);
+			free(info);
 			compteur--;
 		}
 		if (!is_sort_stack(*a))

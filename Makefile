@@ -6,13 +6,13 @@
 #    By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/30 10:11:30 by gpollast          #+#    #+#              #
-#    Updated: 2025/07/10 15:03:25 by gpollast         ###   ########.fr        #
+#    Updated: 2025/07/11 09:09:20 by gpollast         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC = 	main.c \
+SRC = 	src/main.c \
 		src/parse.c \
 		src/parse_utils.c \
 		src/stack.c \
