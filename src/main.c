@@ -6,13 +6,12 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:06:49 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/10 20:06:20 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/11 09:09:15 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "libft/libft.h"
-#include <stdio.h>
+#include "../push_swap.h"
+#include "../libft/libft.h"
 
 int	main(int ac, char **av)
 {
