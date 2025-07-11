@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 11:42:31 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/11 17:23:13 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/11 17:34:48 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	main(int ac, char **av)
 	t_stack	*b;
 	t_args	*args;
 
+	if (ac <= 1)
+		return (1);
 	a = NULL;
 	b = NULL;
 	args = malloc(sizeof(t_args));
@@ -56,6 +58,5 @@ int	main(int ac, char **av)
 			return (free_stacks(&a), write(1, "OK\n", 3), 0);
 		return (free_stacks(&a), write(1, "KO\n", 3), 0);
 	}
-	free_stacks(&a);
-	return (write(2, "Error\n", 6), 1);
+	return (free_stacks(&a), write(2, "Error\n", 6), 1);
 }
