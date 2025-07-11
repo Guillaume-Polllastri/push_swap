@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 10:32:56 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/11 09:26:40 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/11 11:32:17 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,20 +75,23 @@ int	parse_args(t_args *args, int ac, char **av)
 	char	**split;
 	char	**temp;
 
-	i = 1;
+	i = 0;
 	args->size = 0;
 	args->array = malloc(sizeof(char *));
 	if (!args->array)
 		return (0);
 	args->array[0] = NULL;
-	while (i < ac)
+	while (i++ < ac - 1)
 	{
 		split = ft_split(av[i], ' ');
+		if (!split)
+			return (free_string_array(args->array), 0);
 		temp = args->array;
 		args->array = string_array_concat(args->array, split);
 		free_string_array(temp);
 		free_string_array(split);
-		i++;
+		if (!args->array)
+			return (0);
 	}
 	while (args->array[args->size])
 		args->size++;

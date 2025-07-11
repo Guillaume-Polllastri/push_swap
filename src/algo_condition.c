@@ -17,6 +17,8 @@ int	is_sort_stack(t_stack *stack)
 {
 	int	i;
 
+	if (!stack)
+		return (1);
 	i = stack->content;
 	while (stack)
 	{
