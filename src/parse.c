@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 10:32:56 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/11 16:45:54 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/11 17:30:21 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,6 @@ int	validate_args(t_args *args)
 		i++;
 	}
 	if (!check_duplicate(args->array, args->size))
-		return (write(2, "Error\nDuplicated numbers\n", 16), 0);
+		return (write(2, "Error\nDuplicated numbers\n", 25), 0);
 	return (1);
 }
