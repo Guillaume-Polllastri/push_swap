@@ -6,14 +6,14 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 11:51:17 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/10 17:17:40 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:01:40 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include "../libft/libft.h"
 
-static t_stack	*swap(t_stack *stack)
+t_stack	*swap(t_stack *stack)
 {
 	int	tmp;
 

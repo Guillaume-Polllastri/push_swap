@@ -6,14 +6,14 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 11:51:30 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/10 17:16:50 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:01:45 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include "../libft/libft.h"
 
-static	void	push_elem(t_stack **in, t_stack **out)
+void	push_elem(t_stack **in, t_stack **out)
 {
 	if (!(*out))
 		return ;

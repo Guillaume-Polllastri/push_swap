@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:40:17 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/11 00:41:25 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:03:51 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,13 @@ int				is_sort_stack(t_stack *stack);
 
 /* ************************************************************************** */
 
+t_stack			*swap(t_stack *stack);
+void			push_elem(t_stack **in, t_stack **out);
+void			rotate(t_stack **stack);
+void			reverse_rotate(t_stack **stack);
+
+/* ************************************************************************** */
+
 void			sa(t_stack *a);
 void			sb(t_stack *b);
 void			ss(t_stack *a, t_stack *b);
@@ -75,5 +82,9 @@ int				*fill_tab(t_stack **a, int nb_elmt);
 int				k_sort(t_stack **a, t_stack **b, int nb_elmt);
 int				index_element(int *tab, int element, int nb_elmt);
 t_info_stack	where_is_max_index(t_stack *stack);
+
+/* ************************************************************************** */
+
+int				check_instructions(t_stack **a, t_stack **b, char *line);
 
 #endif
