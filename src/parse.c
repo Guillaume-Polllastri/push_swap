@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 10:32:56 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/11 17:30:21 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:12:37 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	parse_args(t_args *args, int ac, char **av)
 	{
 		split = ft_split(av[i], ' ');
 		if (!split)
-			return (free_string_array(args->array), 0);
+			return (free_string_array(split), 0);
 		temp = args->array;
 		args->array = string_array_concat(args->array, split);
 		free_string_array(temp);
