@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 18:17:42 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/10 11:33:03 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:27:35 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_stack	*stack_push(t_stack *tail, t_stack *element)
 	return (head);
 }
 
-void	fill_stack(t_stack **a, t_args *args)
+int	fill_stack(t_stack **a, t_args *args)
 {
 	t_stack	*new;
 	int		i;
@@ -35,10 +35,13 @@ void	fill_stack(t_stack **a, t_args *args)
 	while (i >= 0)
 	{
 		new = new_stack(ft_atoi(args->array[i]));
+		if (!new)
+			return (0);
 		new->next = *a;
 		*a = new;
 		i--;
 	}
+	return (1);
 }
 
 t_stack	*stack_pop(t_stack *stack)

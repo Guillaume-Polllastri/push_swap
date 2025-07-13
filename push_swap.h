@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 17:40:17 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/11 16:03:51 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:27:57 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ double			sqrt(double nb);
 char			**string_array_concat(char **split1, char **split2);
 int				parse_args(t_args *args, int ac, char **av);
 int				validate_args(t_args *args);
-void			fill_stack(t_stack **a, t_args *args);
+int				fill_stack(t_stack **a, t_args *args);
 int				is_sort_stack(t_stack *stack);
 
 /* ************************************************************************** */
