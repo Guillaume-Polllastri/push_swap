@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 10:51:16 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/10 18:01:35 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:36:52 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int	k_sort(t_stack **a, t_stack **b, int nb_elmt)
 
 	count = 0;
 	tab = fill_tab(a, nb_elmt);
+	if (!tab)
+		return (-1);
 	fill_stack_index(a, tab, nb_elmt);
 	free(tab);
 	range = sqrt((double) nb_elmt) * 1.5;
