@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 11:42:31 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/11 17:45:53 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/13 20:00:54 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,17 @@ static int	read_standard_input(t_stack **a, t_stack **b)
 	return (0);
 }
 
+static int	check_args(t_stack **a, t_args *args, int ac, char **av)
+{
+	if (!parse_args(args, ac, av))
+		return (free_string_array(args->array), free(args), 0);
+	if (!validate_args(args))
+		return (free_string_array(args->array), free(args), 0);
+	if (!fill_stack(a, args))
+		return (free_string_array(args->array), free(args), free_stacks(a), 0);
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*a;
@@ -45,11 +56,8 @@ int	main(int ac, char **av)
 	args = malloc(sizeof(t_args));
 	if (!args)
 		return (1);
-	if (!parse_args(args, ac, av))
-		return (free(args), 1);
-	if (!validate_args(args))
-		return (free_string_array(args->array), free(args), 1);
-	fill_stack(&a, args);
+	if (!check_args(&a, args, ac, av))
+		return (1);
 	free_string_array(args->array);
 	free(args);
 	if (is_sort_stack(a))
