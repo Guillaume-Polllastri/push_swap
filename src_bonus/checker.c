@@ -6,7 +6,7 @@
 /*   By: gpollast <gpollast@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 11:42:31 by gpollast          #+#    #+#             */
-/*   Updated: 2025/07/13 20:00:54 by gpollast         ###   ########.fr       */
+/*   Updated: 2025/07/14 11:48:40 by gpollast         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,9 @@ int	main(int ac, char **av)
 	free(args);
 	if (is_sort_stack(a))
 		return (free_stacks(&a), write(1, "OK\n", 3), 0);
-	if (!read_standard_input(&a, &b))
-	{
-		if (is_sort_stack(a) && !b)
-			return (free_stacks(&a), write(1, "OK\n", 3), 0);
+	read_standard_input(&a, &b);
+	if (is_sort_stack(a) && !b)
+		return (free_stacks(&a), write(1, "OK\n", 3), 0);
+	else
 		return (free_stacks(&a), write(1, "KO\n", 3), 0);
-	}
-	return (free_stacks(&a), write(2, "Error\n", 6), 1);
 }
